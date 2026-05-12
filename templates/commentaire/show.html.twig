@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}Commentaire #{{ commentaire.id }}{% endblock %}
+{% block body %}
+<div class="d-flex justify-content-between mb-4">
+    <h1><i class="fa fa-comment"></i> Commentaire #{{ commentaire.id }}</h1>
+    <div>
+        <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}" class="btn btn-warning"><i class="fa fa-edit"></i> Modifier</a>
+        <a href="{{ path('app_commentaire_index') }}" class="btn btn-secondary ms-2"><i class="fa fa-arrow-left"></i> Retour</a>
+    </div>
+</div>
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table">
+            <tr><th>Nom</th><td>{{ commentaire.Nom }}</td></tr>
+            <tr><th>Contenu</th><td>{{ commentaire.Contenu }}</td></tr>
+            <tr><th>Date</th><td>{{ commentaire.Date|date('d/m/Y H:i') }}</td></tr>
+            <tr><th>Personne</th><td>{{ commentaire.personne }}</td></tr>
+        </table>
+    </div>
+</div>
+{% endblock %}

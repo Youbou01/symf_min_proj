@@ -1,0 +1,6 @@
+{% extends 'base.html.twig' %}
+{% block title %}Nouveau Commentaire{% endblock %}
+{% block body %}
+<h1 class="mb-4"><i class="fa fa-plus-circle"></i> Nouveau Commentaire</h1>
+<div class="card shadow-sm"><div class="card-body p-4">{{ include('commentaire/_form.html.twig') }}</div></div>
+{% endblock %}

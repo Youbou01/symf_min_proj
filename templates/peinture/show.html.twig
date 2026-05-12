@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ peinture.Nom }}{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fa fa-eye"></i> {{ peinture.Nom }}</h1>
+    <div>
+        <a href="{{ path('app_peinture_edit', {'id': peinture.id}) }}" class="btn btn-warning">
+            <i class="fa fa-edit"></i> Modifier
+        </a>
+        <a href="{{ path('app_peinture_index') }}" class="btn btn-secondary ms-2">
+            <i class="fa fa-arrow-left"></i> Retour
+        </a>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table">
+            <tbody>
+                <tr><th>Id</th><td>{{ peinture.id }}</td></tr>
+                <tr><th>Nom</th><td>{{ peinture.Nom }}</td></tr>
+                <tr><th>Largeur</th><td>{{ peinture.largeur }} cm</td></tr>
+                <tr><th>Hauteur</th><td>{{ peinture.Hauteur }} cm</td></tr>
+                <tr><th>En vente</th>
+                    <td>
+                        {% if peinture.enVente %}
+                            <span class="badge bg-success">Oui</span>
+                        {% else %}
+                            <span class="badge bg-secondary">Non</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr><th>Prix</th><td>{{ peinture.prix }} TND</td></tr>
+                <tr><th>Date de réalisation</th><td>{{ peinture.dateRealisation|date('d/m/Y H:i') }}</td></tr>
+                <tr><th>Description</th><td>{{ peinture.description }}</td></tr>
+                <tr><th>Artiste</th><td>{{ peinture.personne }}</td></tr>
+                <tr><th>Catégories</th>
+                    <td>
+                        {% for cat in peinture.categories %}
+                            <span class="badge bg-primary">{{ cat.Designation }}</span>
+                        {% else %}
+                            <span class="text-muted">Aucune</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{{ include('peinture/_delete_form.html.twig') }}
+{% endblock %}

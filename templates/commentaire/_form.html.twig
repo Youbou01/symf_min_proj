@@ -1,0 +1,22 @@
+{{ form_start(form) }}
+<div class="mb-3">
+    {{ form_label(form.Nom, 'Nom', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+    {{ form_widget(form.Nom) }}{{ form_errors(form.Nom) }}
+</div>
+<div class="mb-3">
+    {{ form_label(form.Contenu, 'Contenu', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+    {{ form_widget(form.Contenu) }}{{ form_errors(form.Contenu) }}
+</div>
+<div class="mb-3">
+    {{ form_label(form.Date, 'Date', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+    {{ form_widget(form.Date) }}{{ form_errors(form.Date) }}
+</div>
+<div class="mb-3">
+    {{ form_label(form.personne, 'Personne', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+    {{ form_widget(form.personne) }}{{ form_errors(form.personne) }}
+</div>
+<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Enregistrer</button>
+<a href="{{ path('app_commentaire_index') }}" class="btn btn-secondary ms-2">
+    <i class="fa fa-arrow-left"></i> Retour
+</a>
+{{ form_end(form) }}

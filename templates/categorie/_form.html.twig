@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+<div class="mb-3">
+    {{ form_label(form.Designation, 'Désignation', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+    {{ form_widget(form.Designation) }}
+    {{ form_errors(form.Designation) }}
+</div>
+<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Enregistrer</button>
+<a href="{{ path('app_categorie_index') }}" class="btn btn-secondary ms-2">
+    <i class="fa fa-arrow-left"></i> Retour
+</a>
+{{ form_end(form) }}

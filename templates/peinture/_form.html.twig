@@ -1,0 +1,68 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label class="form-label fw-bold">{{ form_label(form.Nom) }}</label>
+        {{ form_widget(form.Nom) }}
+        {{ form_errors(form.Nom) }}
+    </div>
+    <div class="col-md-3 mb-3">
+        <label class="form-label fw-bold">{{ form_label(form.largeur) }}</label>
+        {{ form_widget(form.largeur) }}
+        {{ form_errors(form.largeur) }}
+    </div>
+    <div class="col-md-3 mb-3">
+        <label class="form-label fw-bold">{{ form_label(form.Hauteur) }}</label>
+        {{ form_widget(form.Hauteur) }}
+        {{ form_errors(form.Hauteur) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <label class="form-label fw-bold">{{ form_label(form.prix) }}</label>
+        {{ form_widget(form.prix) }}
+        {{ form_errors(form.prix) }}
+    </div>
+    <div class="col-md-4 mb-3">
+        <label class="form-label fw-bold">{{ form_label(form.date_realisation) }}</label>
+        {{ form_widget(form.date_realisation) }}
+        {{ form_errors(form.date_realisation) }}
+    </div>
+    <div class="col-md-4 mb-3 d-flex align-items-center">
+        <div class="form-check mt-4">
+            {{ form_widget(form.en_vente) }}
+            <label class="form-check-label fw-bold">{{ form_label(form.en_vente) }}</label>
+            {{ form_errors(form.en_vente) }}
+        </div>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label class="form-label fw-bold">{{ form_label(form.description) }}</label>
+    {{ form_widget(form.description) }}
+    {{ form_errors(form.description) }}
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label class="form-label fw-bold">{{ form_label(form.personne) }}</label>
+        {{ form_widget(form.personne) }}
+        {{ form_errors(form.personne) }}
+    </div>
+    <div class="col-md-6 mb-3">
+        <label class="form-label fw-bold">{{ form_label(form.categories) }}</label>
+        {{ form_widget(form.categories) }}
+        <small class="text-muted">Maintenez Ctrl pour sélectionner plusieurs catégories.</small>
+        {{ form_errors(form.categories) }}
+    </div>
+</div>
+
+<button type="submit" class="btn btn-primary">
+    <i class="fa fa-save"></i> Enregistrer
+</button>
+<a href="{{ path('app_peinture_index') }}" class="btn btn-secondary ms-2">
+    <i class="fa fa-arrow-left"></i> Retour
+</a>
+
+{{ form_end(form) }}

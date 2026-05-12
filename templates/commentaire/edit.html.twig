@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modifier Commentaire{% endblock %}
+{% block body %}
+<h1 class="mb-4"><i class="fa fa-edit"></i> Modifier Commentaire</h1>
+<div class="card shadow-sm"><div class="card-body p-4">{{ include('commentaire/_form.html.twig') }}</div></div>
+<hr>
+<form method="post" action="{{ path('app_commentaire_delete', {'id': commentaire.id}) }}"
+      onsubmit="return confirm('Supprimer ce commentaire ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ commentaire.id) }}">
+    <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Supprimer</button>
+</form>
+{% endblock %}
