@@ -15,6 +15,10 @@
     {{ form_label(form.personne, 'Personne', {'label_attr': {'class': 'form-label fw-bold'}}) }}
     {{ form_widget(form.personne) }}{{ form_errors(form.personne) }}
 </div>
+<div class="mb-3">
+    {{ form_label(form.peinture, 'Peinture', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+    {{ form_widget(form.peinture) }}{{ form_errors(form.peinture) }}
+</div>
 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Enregistrer</button>
 <a href="{{ path('app_commentaire_index') }}" class="btn btn-secondary ms-2">
     <i class="fa fa-arrow-left"></i> Retour
