@@ -25,6 +25,7 @@ class CommentaireCrudController extends AbstractCrudController
             TextareaField::new('Contenu', 'Contenu')->hideOnIndex(),
             DateTimeField::new('Date', 'Date'),
             AssociationField::new('personne', 'Personne'),
+            AssociationField::new('peinture', 'Peinture'),
         ];
     }
 }

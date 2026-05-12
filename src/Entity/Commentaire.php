@@ -26,6 +26,10 @@ class Commentaire
     #[ORM\JoinColumn(nullable: false)]
     private ?Personne $personne = null;
 
+    #[ORM\ManyToOne(inversedBy: 'commentaires')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Peinture $peinture = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,6 +76,17 @@ class Commentaire
     public function setPersonne(?Personne $personne): static
     {
         $this->personne = $personne;
+        return $this;
+    }
+
+    public function getPeinture(): ?Peinture
+    {
+        return $this->peinture;
+    }
+
+    public function setPeinture(?Peinture $peinture): static
+    {
+        $this->peinture = $peinture;
         return $this;
     }
 }

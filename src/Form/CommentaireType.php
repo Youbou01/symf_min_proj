@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Commentaire;
+use App\Entity\Peinture;
 use App\Entity\Personne;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -34,6 +35,12 @@ class CommentaireType extends AbstractType
                 'class'        => Personne::class,
                 'choice_label' => '__toString',
                 'label'        => 'Personne',
+                'attr'         => ['class' => 'form-select'],
+            ])
+            ->add('peinture', EntityType::class, [
+                'class'        => Peinture::class,
+                'choice_label' => '__toString',
+                'label'        => 'Peinture',
                 'attr'         => ['class' => 'form-select'],
             ])
         ;

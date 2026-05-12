@@ -43,9 +43,13 @@ class Peinture
     #[ORM\ManyToMany(targetEntity: Categorie::class, inversedBy: 'peintures')]
     private Collection $categories;
 
+    #[ORM\OneToMany(mappedBy: 'peinture', targetEntity: Commentaire::class, orphanRemoval: true)]
+    private Collection $commentaires;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -158,6 +162,31 @@ class Peinture
     public function removeCategorie(Categorie $categorie): static
     {
         $this->categories->removeElement($categorie);
+        return $this;
+    }
+
+    /** @return Collection<int, Commentaire> */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): static
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires->add($commentaire);
+            $commentaire->setPeinture($this);
+        }
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): static
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            if ($commentaire->getPeinture() === $this) {
+                $commentaire->setPeinture(null);
+            }
+        }
         return $this;
     }
 
