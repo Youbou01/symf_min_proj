@@ -2,12 +2,15 @@
 
 ## Création d'un compte admin
 
+L'exemple ci-dessous crée le compte **admin@admin.com / 0000** demandé pour un scénario de dev local. Pour tout autre usage,
+remplacez l'email et le mot de passe par des valeurs fortes et uniques, puis changez-les immédiatement après la première connexion.
+
 1. Appliquez les migrations :
    `php bin/console doctrine:migrations:migrate`
-2. Générez le hash du mot de passe `0000` (mot de passe de démarrage demandé pour le dev ; changez-le immédiatement et ne l'utilisez pas en production) :
+2. Générez le hash du mot de passe `0000` (uniquement pour reproduire l'exemple demandé) :
    - Bash/Zsh : `php bin/console security:hash-password --user-class 'App\Entity\User'`
    - Windows cmd : `php bin/console security:hash-password --user-class "App\Entity\User"`
-3. Créez la personne et récupérez son `id` (remplacez `tel` et `cin` par des valeurs réelles si nécessaire, et assurez-vous qu'elles sont uniques si votre base l'exige) :
+3. Créez la personne et récupérez son `id` (remplacez `tel` et `cin` par des valeurs réelles, uniques si votre base l'exige) :
    `php bin/console doctrine:query:sql "INSERT INTO personne (nom, pre_nom, tel, cin, type) VALUES ('Admin','Admin','00000000','00000000','user') RETURNING id;"`
    (Si votre SGBD ne supporte pas `RETURNING`, exécutez ensuite un `SELECT id FROM personne WHERE cin = '...'`.)
 4. Créez l'utilisateur admin avec l'`id` et le hash (utilisez un email unique si `admin@admin.com` existe déjà) :
