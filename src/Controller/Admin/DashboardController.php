@@ -2,6 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Categorie;
+use App\Entity\Commentaire;
+use App\Entity\Peinture;
+use App\Entity\Personne;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -27,12 +32,12 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
         yield MenuItem::section('Catalogue');
-        yield MenuItem::linkTo(PeintureCrudController::class, 'Peintures', 'fa fa-paint-brush');
-        yield MenuItem::linkTo(CategorieCrudController::class, 'Catégories', 'fa fa-tags');
+        yield MenuItem::linkToCrud('Peintures', 'fa fa-paint-brush', Peinture::class);
+        yield MenuItem::linkToCrud('Catégories', 'fa fa-tags', Categorie::class);
         yield MenuItem::section('Interactions');
-        yield MenuItem::linkTo(CommentaireCrudController::class, 'Commentaires', 'fa fa-comments');
+        yield MenuItem::linkToCrud('Commentaires', 'fa fa-comments', Commentaire::class);
         yield MenuItem::section('Utilisateurs');
-        yield MenuItem::linkTo(PersonneCrudController::class, 'Personnes', 'fa fa-user');
-        yield MenuItem::linkTo(UserCrudController::class, 'Utilisateurs', 'fa fa-users');
+        yield MenuItem::linkToCrud('Personnes', 'fa fa-user', Personne::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', User::class);
     }
 }
