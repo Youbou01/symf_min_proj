@@ -10,10 +10,10 @@ usage (staging/prod), utilisez des identifiants forts et uniques dès le départ
 2. Générez le hash du mot de passe `0000` (uniquement pour reproduire l'exemple demandé) :
    - Bash/Zsh : `php bin/console security:hash-password --user-class 'App\Entity\User'`
    - Windows cmd : `php bin/console security:hash-password --user-class "App\Entity\User"`
-3. Créez la personne et récupérez son `id` (remplacez `tel` et `cin` par des valeurs réelles, uniques si votre base l'exige) :
+3. Créez la personne et récupérez son `id` (remplacez `tel` et `cin` par des valeurs réelles et uniques, même en local, pour éviter les conflits) :
    `php bin/console doctrine:query:sql "INSERT INTO personne (nom, pre_nom, tel, cin, type) VALUES ('Admin','Admin','00000000','00000000','user') RETURNING id;"`
-   (La clause `RETURNING` nécessite PostgreSQL. Sur MySQL/MariaDB, récupérez l'id avec `SELECT LAST_INSERT_ID()` après l'INSERT,
-   ou faites un `SELECT id FROM personne WHERE cin = '...'`, ou utilisez un Command Symfony.)
+   Note : la clause `RETURNING` nécessite PostgreSQL. Sur MySQL/MariaDB, récupérez l'id avec `SELECT LAST_INSERT_ID()` après l'INSERT,
+   ou faites un `SELECT id FROM personne WHERE cin = '...'`, ou utilisez un Command Symfony.
 4. Créez l'utilisateur admin avec l'`id` et le hash (utilisez un email unique si `admin@admin.com` existe déjà) :
    `php bin/console doctrine:query:sql "INSERT INTO \"user\" (id, emaillogin, password, roles) VALUES (<ID_FROM_STEP_3>, 'admin@admin.com', '<HASH_FROM_STEP_2>', '[\"ROLE_ADMIN\"]');"`
 
