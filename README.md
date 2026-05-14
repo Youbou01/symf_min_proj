@@ -2,6 +2,9 @@
 
 ## Création d'un compte admin
 
+Recommandé : créez l'utilisateur via un Command Symfony dédié ou des fixtures Doctrine pour bénéficier de la validation,
+du hashing et des lifecycle callbacks. Les commandes SQL ci-dessous sont **un fallback pour dev local uniquement**.
+
 L'exemple ci-dessous crée le compte **admin@admin.com / 0000** demandé pour un scénario de dev local uniquement. Pour tout autre
 usage (staging/prod), utilisez des identifiants forts et uniques dès le départ et ne déployez jamais ces valeurs par défaut.
 
