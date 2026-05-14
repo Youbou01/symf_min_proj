@@ -2,8 +2,8 @@
 
 ## Création d'un compte admin
 
-L'exemple ci-dessous crée le compte **admin@admin.com / 0000** demandé pour un scénario de dev local. Pour tout autre usage,
-remplacez l'email et le mot de passe par des valeurs fortes et uniques, puis changez-les immédiatement après la première connexion.
+L'exemple ci-dessous crée le compte **admin@admin.com / 0000** demandé pour un scénario de dev local uniquement. Pour tout autre
+usage (staging/prod), utilisez des identifiants forts et uniques dès le départ et ne déployez jamais ces valeurs par défaut.
 
 1. Appliquez les migrations :
    `php bin/console doctrine:migrations:migrate`
@@ -18,6 +18,6 @@ remplacez l'email et le mot de passe par des valeurs fortes et uniques, puis cha
    `php bin/console doctrine:query:sql "INSERT INTO \"user\" (id, emaillogin, password, roles) VALUES (<ID_FROM_STEP_3>, 'admin@admin.com', '<HASH_FROM_STEP_2>', '[\"ROLE_ADMIN\"]');"`
 
 Remplacez `<ID_FROM_STEP_3>` et `<HASH_FROM_STEP_2>` par les valeurs obtenues aux étapes précédentes.
-Ces commandes font une insertion directe en base (sans validation Doctrine). Pour un usage réel, préférez un Command Symfony dédié
-ou des fixtures Doctrine, et conservez l'approche SQL uniquement comme solution de dépannage rapide. Si votre shell se plaint de
-l'échappement, utilisez le JSON attendu `["ROLE_ADMIN"]` et adaptez les guillemets selon votre environnement.
+Ces commandes font une insertion directe en base (sans validation Doctrine ni callbacks/lifecycle events). Pour un usage réel,
+préférez un Command Symfony dédié ou des fixtures Doctrine, et conservez l'approche SQL uniquement comme solution de dépannage rapide.
+Si votre shell se plaint de l'échappement, utilisez le JSON attendu `["ROLE_ADMIN"]` et adaptez les guillemets selon votre environnement.
